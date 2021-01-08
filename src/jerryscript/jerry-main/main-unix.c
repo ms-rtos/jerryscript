@@ -222,6 +222,10 @@ restart:
     const char *prompt = (arguments.option_flags & OPT_FLAG_NO_PROMPT) ? "" : "jerry> ";
     char buffer[JERRY_BUFFER_SIZE];
 
+#ifdef __MS_RTOS__
+    setbuf(stdout, NULL);
+#endif
+
     while (true)
     {
       printf ("%s", prompt);
